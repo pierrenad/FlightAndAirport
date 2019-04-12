@@ -24,5 +24,19 @@ namespace FlightAndAirport
         {
             InitializeComponent();
         }
+
+        #region BOUTONS
+        private void Annuler_Click(object sender, RoutedEventArgs e)
+        {
+            Login.Text = "";
+            Password.Text = "";
+            Code.Text = ""; 
+        }
+
+        private void Valider_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        #endregion 
     }
 }

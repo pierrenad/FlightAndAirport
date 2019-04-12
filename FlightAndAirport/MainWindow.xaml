@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlightAndAirport"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Login" Height="350" Width="500" ResizeMode="NoResize" Background="DarkGray"> 
     <Grid>
-        
+        <Label Content="Login : " FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,40,0,0"/>
+        <TextBox x:Name="Login" Height="25" Width="250" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="200,45,0,0"/>
+        <Label Content="Password : " FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,100,0,0"/>
+        <TextBox x:Name="Password" Height="25" Width="250" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="200,105,0,0"/>
+        <Label Content="Code : " FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="50,160,0,0"/>
+        <TextBox x:Name="Code" Height="25" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="200,165,0,0"/>
+
+        <Button x:Name="Valider" Content="Valider" Height="25" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="-200,200,0,0" Click="Valider_Click"/>
+        <Button x:Name="Annuler" Content="Annuler" Height="25" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="200,200,0,0" Click="Annuler_Click"/>
     </Grid>
 </Window>
