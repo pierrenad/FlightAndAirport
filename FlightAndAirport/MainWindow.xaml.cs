@@ -35,7 +35,15 @@ namespace FlightAndAirport
 
         private void Valider_Click(object sender, RoutedEventArgs e)
         {
-
+            // pour le moment 
+            if(Password.Text.Equals("admin") && Login.Text.Equals("Admin")) 
+            {
+                if() 
+            }
+            else
+            {
+                MessageBox.Show("Login incorrect !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error); 
+            }
         }
         #endregion 
     }

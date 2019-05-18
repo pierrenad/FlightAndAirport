@@ -10,33 +10,31 @@ namespace FlightAndAirport
     {
         #region 
         private string _nom;
-        private string _mdp;
+        private string _localisation;
         #endregion 
 
         #region PROPRIETES 
-        public string Nom
-        {
+        public string Nom { 
             get { return _nom; }
             set { _nom = value; }
-        }
+        } 
 
-        public string Mdp
-        {
-            get { return _mdp; } 
-            set { _mdp = value; }
-        }
+        public string Loca { 
+            get { return _localisation; } 
+            set { _localisation = value; }
+        } 
         #endregion 
 
         public User()
         {
             Nom = "";
-            Mdp = ""; 
+            Loca = ""; 
         }
 
-        public User(string n, string m)
+        public User(string n, string l)
         {
             Nom = n;
-            Mdp = m; 
+            Loca = m; 
         }
     }
 }
