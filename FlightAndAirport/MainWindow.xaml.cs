@@ -1,19 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Classes;
-using FlightAndAirport; 
+using Classes; 
 
 namespace FlightAndAirport
 {
@@ -41,15 +28,15 @@ namespace FlightAndAirport
         {
             try
             {
-                if (Code.Text.Length != 2 && Code.Text.Length != 3) throw new Exception("Mauvais code ! (2 ou 3 lettres)");
-                Manager.Connexion(Code.Text, Login.Text, Password.Password);
+                if (Code.Text.Length != 2 && Code.Text.Length != 3) throw new Exception("Bad code ! (2 or 3 letters)");
                 Manager.Init(); 
+                Manager.Connexion(Code.Text, Login.Text, Password.Password);
                 // si on passe ligne au dessus c'est que ça c'est bien passé 
-                Uti = new ClassUser(Manager.Nom, Password.Password, Code.Text); 
+                Uti = new ClassUser(Manager.Nom, Code.Text, Manager.Image, Manager.Ville); // on va l'utiliser dans company donc faut tous les elements qu'on a besoin, dans la classe 
 
                 if(Code.Text.Length == 2)
                 {
-                    Company comp = new Company();
+                    Company comp = new Company(this);
                     comp.Show(); 
                 }
                 else if(Code.Text.Length == 3)
@@ -88,22 +75,22 @@ namespace FlightAndAirport
             {
                 if (New_Code.Text.Length != 2 && New_Code.Text.Length != 3) throw new Exception("Mauvais code ! (2 ou 3 lettres)");
                 // creation de l'utilisateur 
-                Manager.Nouveau(New_Code.Text, New_Mdp.Password, New_MdpConfirmation.Password, New_Login.Text, New_Ville.Text, New_Company.Text);
+                Manager.Nouveau(New_Code.Text, New_Password.Password, New_PasswordConfirmation.Password, New_Login.Text, New_Ville.Text, New_Company.Text);
                 // apres ça on affiche la connexion 
                 Affichage("Connexion");
                 New_Code.Text = "";
                 New_Company.Text = "";
                 New_Login.Text = "";
-                New_Mdp.Password = "";
-                New_MdpConfirmation.Password = "";
+                New_Password.Password = "";
+                New_PasswordConfirmation.Password = "";
                 New_Ville.Text = ""; 
             }
             catch(Exception ex) 
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 New_Code.Text = "";
-                New_Mdp.Password = "";
-                New_MdpConfirmation.Password = ""; 
+                New_Password.Password = "";
+                New_PasswordConfirmation.Password = ""; 
             }
         }
 

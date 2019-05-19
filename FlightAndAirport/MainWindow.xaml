@@ -9,7 +9,7 @@
     <Grid>
         <!--Connexion Window--> 
         <StackPanel x:Name="StackConnexion" Visibility="Visible">
-            <Label Content="Connexion" FontSize="25" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+            <Label Content="Connection" FontSize="25" FontWeight="Bold" VerticalAlignment="Top" HorizontalAlignment="Center"/>
             <Label Content="Login : " FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
             <TextBox x:Name="Login" Height="20" VerticalAlignment="Top"/> 
             <Label Content="Password : " FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
@@ -17,9 +17,9 @@
             <!-- <TextBox x:Name="Password" Height="20" VerticalAlignment="Top"/> --> 
             <Label Content="Code : " FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
             <TextBox x:Name="Code" Height="20" VerticalAlignment="Top"/>
-            <Button x:Name="Valider" Content="Valider" FontSize="15" Height="25" Margin="0,25,0,0" Click="Valider_Click"/>
-            <Button x:Name="Annuler" Content="Annuler" FontSize="15" Height="25" Margin="0,5,0,0" Click="Annuler_Click"/>
-            <Button x:Name="Enregistrer" Content="S'enregistrer" FontSize="15" Height="25" Margin="0,5,0,0" Click="Enregistrer_Click"/> 
+            <Button x:Name="Validate" Content="Validate" FontSize="15" Height="25" Margin="0,25,0,0" Click="Valider_Click"/>
+            <Button x:Name="Cancel" Content="Cancel" FontSize="15" Height="25" Margin="0,5,0,0" Click="Annuler_Click"/>
+            <Button x:Name="Register" Content="Register" FontSize="15" Height="25" Margin="0,5,0,0" Click="Enregistrer_Click"/> 
         </StackPanel>
         
         <!--Nouveau Window--> 
@@ -29,21 +29,18 @@
             <TextBox x:Name="New_Code" Height="20" VerticalAlignment="Top"/> 
             <Label Content="Login :" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
             <TextBox x:Name="New_Login" Height="20" VerticalAlignment="Top"/>
-            <Label Content="Ville :" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <Label Content="City :" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
             <TextBox x:Name="New_Ville" Height="20" VerticalAlignment="Top"/>
-            <Label Content="Nom de la compagnie :" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <Label Content="Company name :" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
             <TextBox x:Name="New_Company" Height="20" VerticalAlignment="Top"/>
-            <Label Content="Mot de passe :" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-            <PasswordBox  x:Name="New_Mdp" Height="20" VerticalAlignment="Top" PasswordChar="*"/>
+            <Label Content="Password :" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <PasswordBox  x:Name="New_Password" Height="20" VerticalAlignment="Top" PasswordChar="*"/>
             <!-- <TextBox x:Name="New_Mdp" Height="20" VerticalAlignment="Top"/> --> 
-            <Label Content="Confirmer le mot de passe :" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-            <PasswordBox  x:Name="New_MdpConfirmation" Height="20" VerticalAlignment="Top" PasswordChar="*"/>
+            <Label Content="Confirm password :" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <PasswordBox  x:Name="New_PasswordConfirmation" Height="20" VerticalAlignment="Top" PasswordChar="*"/>
             <!-- <TextBox x:Name="New_MdpConfirmation" Height="20" VerticalAlignment="Top"/> --> 
-            <Button x:Name="ButtonCreer" Content="Créer" FontSize="15" Height="25" Margin="0,10,0,0" Click="ButtonCreer_Click"/> 
-            <Button x:Name="ButtonAnnuler" Content="Annuler" FontSize="15" Height="25" Click="ButtonAnnuler_Click"/> 
+            <Button x:Name="ButtonCreate" Content="Create" FontSize="15" Height="25" Margin="0,10,0,0" Click="ButtonCreer_Click"/> 
+            <Button x:Name="ButtonCancel" Content="Cancel" FontSize="15" Height="25" Click="ButtonAnnuler_Click"/> 
         </StackPanel>
-        
-
-        
     </Grid>
 </Window>

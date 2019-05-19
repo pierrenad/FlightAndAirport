@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Win32;
 using System.IO;
 using System.Windows.Forms;
@@ -33,18 +29,18 @@ namespace Classes
             // choix du prochain sous dossier selon le code 
             switch (code.Length)
             {
-                case 2: MyKey = MyKey.CreateSubKey("Code_Compagnie"); break;
-                case 3: MyKey = MyKey.CreateSubKey("Code_Aeroport"); break;
+                case 2: MyKey = MyKey.CreateSubKey("Code_Company"); break;
+                case 3: MyKey = MyKey.CreateSubKey("Code_Airport"); break;
             }
 
             // crée sous dossier du nom du code ou ouvre s'il existe deja 
             MyKey = MyKey.CreateSubKey(code);
 
             // si utilisateur n'est pas enregistré 
-            if (MyKey.GetValue(nom) == null) throw new Exception("Utilisateur inconnu !");
+            if (MyKey.GetValue(nom) == null) throw new Exception("Unknown user !"); 
 
             // si mot de passe ne correspond pas a valeur affectée à l'utilisateur 
-            if ((string)MyKey.GetValue(nom) != mdp) throw new Exception("Mot de passe incorrect !");
+            if ((string)MyKey.GetValue(nom) != mdp) throw new Exception("Incorrect password !");
 
             Image = (string)MyKey.GetValue("Image");
             Ville = (string)MyKey.GetValue("Ville");
@@ -75,7 +71,7 @@ namespace Classes
             MyKey = MyKey.CreateSubKey("HEPL");
 
             FolderBrowserDialog fbd = new FolderBrowserDialog { SelectedPath = Directory.GetCurrentDirectory() };
-            if (fbd.ShowDialog() == DialogResult.OK) MyKey.SetValue("Workspace", fbd.SelectedPath);
+            if (fbd.ShowDialog() == DialogResult.OK) MyKey.SetValue("Workplace", fbd.SelectedPath);
 
             // récupération de la valeur 
             WorkPlace = (string)MyKey.GetValue("Workplace");
@@ -83,7 +79,7 @@ namespace Classes
 
         public void Nouveau(string code, string password, string password2, string login, string ville, string companyName)
         {
-            if (!password.Equals(password2)) throw new Exception("Mot de passe incorrect !");
+            if (!password.Equals(password2)) throw new Exception("Incorrect password !");
 
             // crée ou ouvre les sous dossier 
             MyKey = Registry.CurrentUser.CreateSubKey("Software");
@@ -92,8 +88,8 @@ namespace Classes
             // choix du prochain sous dossier selon le code 
             switch (code.Length)
             {
-                case 2: MyKey = MyKey.CreateSubKey("Code_Compagnie"); break;
-                case 3: MyKey = MyKey.CreateSubKey("Code_Aeroport"); break;
+                case 2: MyKey = MyKey.CreateSubKey("Code_Company"); break;
+                case 3: MyKey = MyKey.CreateSubKey("Code_Airport"); break;
             }
 
             // crée sous dossier du nom du code ou ouvre s'il existe deja 
@@ -110,7 +106,7 @@ namespace Classes
                 MyKey.SetValue("Nom", companyName);
                 Nom = (string)MyKey.GetValue("Nom");
             }
-            if ((string)MyKey.GetValue("Image") == null)
+            if ((string)MyKey.GetValue("Image") == null) // on va chercher image 
             {
                 System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog { FileName = Directory.GetCurrentDirectory() }; // aussi dans Win32 
                 if (dialog.ShowDialog() == DialogResult.OK) MyKey.SetValue("Image", dialog.FileName);

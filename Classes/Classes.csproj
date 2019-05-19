@@ -48,7 +48,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassGenericFlight.cs" />
     <Compile Include="ClassRegistry.cs" />
+    <Compile Include="ClassScheduledFlight.cs" />
+    <Compile Include="ClassSerializable.cs" />
     <Compile Include="ClassUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
