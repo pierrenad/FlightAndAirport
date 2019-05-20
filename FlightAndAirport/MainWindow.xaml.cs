@@ -41,7 +41,7 @@ namespace FlightAndAirport
                 }
                 else if(Code.Text.Length == 3)
                 {
-                    Airport aer = new Airport();
+                    Airport aer = new Airport(this);
                     aer.Show(); 
                 }
                 this.Close(); 

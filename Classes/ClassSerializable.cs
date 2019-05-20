@@ -42,32 +42,14 @@ namespace Classes
             }
         }
 
-        // create / exist? 
-        /*public static ObservableCollection<T> CreateFromXMLFormat<T>(string filename) where T : class
-        {
-            XmlSerializer xmlFormat = new XmlSerializer(typeof(ObservableCollection<T>));
-            using (Stream fStream = File.Create(filename))
-            {
-                ObservableCollection<T> tmp = (ObservableCollection<T>)xmlFormat.Deserialize(fStream);
-                return tmp;
-            }
-        }*/
-        /*public static bool ExistsFromXMLFormat<T>(string filename) where T : class 
-        {
-            XmlSerializer xmlFormat = new XmlSerializer(typeof(ObservableCollection<T>));
-
-            if (File.Exists(filename) == true) return true;
-            else return false;
-        }*/
-
         // Read / Write - csv Format 
         public static bool WriteFile<T>(ObservableCollection<T> tmp, string filename) where T : class
         {
             try
             {
-                using (TextWriter tr = new StreamWriter(filename, true, Encoding.GetEncoding(1252)))
+                using (TextWriter tr = new StreamWriter(filename, false, Encoding.GetEncoding(1252)))
                 {
-                    var csv = new CsvWriter(tr, ConfigCvs);
+                    CsvWriter csv = new CsvWriter(tr, ConfigCvs);
                     csv.WriteRecords(tmp);
                 }
                 return false;
@@ -83,7 +65,7 @@ namespace Classes
             List<T> tmp = new List<T>();
             using (TextReader tr = new StreamReader(filename, Encoding.GetEncoding(1252)))
             {
-                var csv = new CsvReader(tr, ConfigCvs);
+                CsvReader csv = new CsvReader(tr, ConfigCvs);
                 tmp = csv.GetRecords<T>().ToList();
                 foreach (var item in tmp) collection.Add(item);
             }

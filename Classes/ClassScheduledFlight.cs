@@ -10,6 +10,7 @@ namespace Classes
         private int _passengers; 
         private DateTime _date;
         public ClassGenericFlight Flight { get; set; } 
+        
         #region PROPRIETES 
         public int Passengers 
         {

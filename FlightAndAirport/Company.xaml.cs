@@ -31,7 +31,7 @@ namespace FlightAndAirport
 
             try // on va récupérer le fichier enregistré si y en a un, sinon on le crée (que vols génériques) 
             {
-                MyGenericFlights = ClassSerializable.LoadFromXMLFormat<ClassGenericFlight>(MyManager.WorkPlace + "/" + MyUtil.Code + "Flight.xml");
+                MyGenericFlights = ClassSerializable.LoadFromXMLFormat<ClassGenericFlight>(MyManager.WorkPlace + "/" + MyUtil.Code + "_Flight.xml");
                 Sort();
 
                 List<ClassGenericFlight> temp = new List<ClassGenericFlight>(); 
@@ -46,7 +46,7 @@ namespace FlightAndAirport
             catch(Exception)
             {
                 MessageBox.Show("File doesn't exists - File creation !", "Error", MessageBoxButton.OK, MessageBoxImage.Error); 
-                ClassSerializable.SaveAsXMLFormat(MyGenericFlights, MyManager.WorkPlace + "/" + MyUtil.Code + "Flight.xml"); 
+                ClassSerializable.SaveAsXMLFormat(MyGenericFlights, MyManager.WorkPlace + "/" + MyUtil.Code + "_Flight.xml"); 
             }
             Datagrid_Generic.DataContext = MyGenericFlights;
             Datagrid_Scheduled.DataContext = MyScheduledFlights;
@@ -65,7 +65,7 @@ namespace FlightAndAirport
 
                 #region Application.Current.Shutdown();
                 Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
-                dlg.FileName = MyUtil.Code + "Flight"; // Default file name
+                dlg.FileName = MyUtil.Code + "_Flight"; // Default file name
                 dlg.DefaultExt = ".xml"; // Default file extension
                 dlg.Filter = "Text documents (.xml)|*.xml"; // Filter files by extension
                 dlg.InitialDirectory = MyManager.WorkPlace;
@@ -79,7 +79,7 @@ namespace FlightAndAirport
         {
             #region OpenFileDialog
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-            dlg.FileName = MyUtil.Code + "Flight"; // Default file name
+            dlg.FileName = MyUtil.Code + "_Flight"; // Default file name
             dlg.DefaultExt = ".xml"; // Default file extension
             dlg.Filter = "Text documents (.xml)|*.xml"; // Filter files by extension
             dlg.InitialDirectory = MyManager.WorkPlace;
@@ -93,7 +93,7 @@ namespace FlightAndAirport
                 else if (!item.Code.Equals(MyUtil.Code)) tmp.Add(item);
             }
             foreach (ClassGenericFlight item in tmp) MyGenericFlights.Remove(item);
-            if (MyGenericFlights.Count == 0) MessageBox.Show("Aucun vol générique pour cette compagnie a été trouvée");
+            if (MyGenericFlights.Count == 0) MessageBox.Show("No generic flight found for this company !", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             Datagrid_Generic.DataContext = MyGenericFlights;
             #endregion 
         }
@@ -107,7 +107,7 @@ namespace FlightAndAirport
                 foreach (ClassGenericFlight tmp in MyGenericFlights) tmp.Code = MyUtil.Code;
                 #region Application.Current.Shutdown();
                 Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
-                dlg.FileName = MyUtil.Code + "Flight"; // Default file name
+                dlg.FileName = MyUtil.Code + "_Flight"; // Default file name
                 dlg.DefaultExt = ".txt"; // Default file extension
                 dlg.Filter = "Text documents (.txt)|*.txt"; // Filter files by extension
                 dlg.InitialDirectory = MyManager.WorkPlace;
@@ -121,7 +121,7 @@ namespace FlightAndAirport
         {
             #region OpenFileDialog
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-            dlg.FileName = MyUtil.Code + "Flight"; // Default file name
+            dlg.FileName = MyUtil.Code + "_Flight"; // Default file name
             dlg.DefaultExt = ".txt"; // Default file extension
             dlg.Filter = "Text documents (.txt)|*.txt"; // Filter files by extension
             dlg.InitialDirectory = MyManager.WorkPlace;
@@ -135,7 +135,7 @@ namespace FlightAndAirport
                 else if (!item.Code.Equals(MyUtil.Code)) tmp.Add(item);
             }
             foreach (ClassGenericFlight item in tmp) MyGenericFlights.Remove(item);
-            if (MyGenericFlights.Count == 0) MessageBox.Show("Aucun vol générique pour cette compagnie a été trouvée");
+            if (MyGenericFlights.Count == 0) MessageBox.Show("No generic flight found for this company !", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             Datagrid_Generic.DataContext = MyGenericFlights;
             #endregion
         }
@@ -147,7 +147,7 @@ namespace FlightAndAirport
             {
                 #region Application.Current.Shutdown();
                 Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
-                dlg.FileName = MyUtil.Code + "FlightS"; // Default file name
+                dlg.FileName = MyUtil.Code + "_FlightS"; // Default file name
                 dlg.DefaultExt = ".xml"; // Default file extension
                 dlg.Filter = "Text documents (.xml)|*.xml"; // Filter files by extension
                 dlg.InitialDirectory = MyManager.WorkPlace; 
@@ -161,7 +161,7 @@ namespace FlightAndAirport
         {
             #region OpenFileDialog
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-            dlg.FileName = MyUtil.Code + "FlightS"; // Default file name
+            dlg.FileName = MyUtil.Code + "_FlightS"; // Default file name
             dlg.DefaultExt = ".xml"; // Default file extension
             dlg.Filter = "Text documents (.xml)|*.xml"; // Filter files by extension
             dlg.InitialDirectory = MyManager.WorkPlace;
@@ -177,7 +177,6 @@ namespace FlightAndAirport
             foreach (ClassScheduledFlight item in tmp) MyScheduledFlights.Remove(item);
             if (MyScheduledFlights.Count == 0) MessageBox.Show("No scheduled flight found for this company !", "Error", MessageBoxButton.OK, MessageBoxImage.Error); 
             Datagrid_Scheduled.DataContext = MyScheduledFlights; 
-            //foreach (ClasseVolGenerique tmp in MesVolGenerique) MessageBox.Show(tmp.ToString());
             #endregion 
         }
 
@@ -190,7 +189,7 @@ namespace FlightAndAirport
         #region OPTION_MENU 
         private void About_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Nadin Pierre \nGroupe 2222 \nCopyright HEPL", "About", MessageBoxButton.OK, MessageBoxImage.Hand); 
+            MessageBox.Show("Nadin Pierre \nGroupe 2222 \nCopyright HEPL", "About", MessageBoxButton.OK, MessageBoxImage.Information); 
         }
 
         private void Option_Click(object sender, RoutedEventArgs e)
@@ -205,12 +204,16 @@ namespace FlightAndAirport
             else if (Datagrid_Generic.SelectedIndex == -1) MessageBox.Show("Select at least a generic flight !", "Error", MessageBoxButton.OK, MessageBoxImage.Error); 
             else
             {
-                foreach (ClassGenericFlight item in Datagrid_Generic.SelectedItems)
+                try
                 {
-                    ClassScheduledFlight flight = new ClassScheduledFlight(Convert.ToDateTime(Datepicker_Scheduledflight.Text), item);
-                    MyScheduledFlights.Add(flight); 
+                    foreach (ClassGenericFlight item in Datagrid_Generic.SelectedItems)
+                    {
+                        ClassScheduledFlight flight = new ClassScheduledFlight(Convert.ToDateTime(Datepicker_Scheduledflight.Text), item);
+                        MyScheduledFlights.Add(flight);
+                    }
+                    Datagrid_Scheduled.DataContext = MyScheduledFlights;
                 }
-                Datagrid_Scheduled.DataContext = MyScheduledFlights; 
+                catch (Exception) { }
             }
         }
 
@@ -219,10 +222,14 @@ namespace FlightAndAirport
             if (Datagrid_Generic.SelectedIndex == -1) MessageBox.Show("Select at least a generic flight !", "Error", MessageBoxButton.OK, MessageBoxImage.Error); 
             else
             {
-                List<ClassGenericFlight> tmp = new List<ClassGenericFlight>();
-                foreach (ClassGenericFlight item in Datagrid_Generic.SelectedItems) tmp.Add(item);
-                foreach (ClassGenericFlight item in tmp) MyGenericFlights.Remove(item);
-                Datagrid_Generic.DataContext = MyGenericFlights; 
+                try
+                {
+                    List<ClassGenericFlight> tmp = new List<ClassGenericFlight>();
+                    foreach (ClassGenericFlight item in Datagrid_Generic.SelectedItems) tmp.Add(item);
+                    foreach (ClassGenericFlight item in tmp) MyGenericFlights.Remove(item);
+                    Datagrid_Generic.DataContext = MyGenericFlights;
+                }
+                catch (Exception) { }
             }
         }
 
@@ -231,10 +238,14 @@ namespace FlightAndAirport
             if (Datagrid_Scheduled.SelectedIndex == -1) MessageBox.Show("Select at least a scheduled flight !", "Error", MessageBoxButton.OK, MessageBoxImage.Error); 
             else
             {
-                List<ClassScheduledFlight> tmp = new List<ClassScheduledFlight>();
-                foreach (ClassScheduledFlight item in Datagrid_Scheduled.SelectedItems) tmp.Add(item);
-                foreach (ClassScheduledFlight item in tmp) MyScheduledFlights.Remove(item);
-                Datagrid_Scheduled.DataContext = MyScheduledFlights; 
+                try
+                {
+                    List<ClassScheduledFlight> tmp = new List<ClassScheduledFlight>();
+                    foreach (ClassScheduledFlight item in Datagrid_Scheduled.SelectedItems) tmp.Add(item);
+                    foreach (ClassScheduledFlight item in tmp) MyScheduledFlights.Remove(item);
+                    Datagrid_Scheduled.DataContext = MyScheduledFlights;
+                }
+                catch (Exception) { }
             }
         }
         #endregion
@@ -245,8 +256,8 @@ namespace FlightAndAirport
             MessageBoxResult i = MessageBox.Show(this, "Do you want to save ?", "Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (MessageBoxResult.Yes == i) 
             {
-                ClassSerializable.SaveAsXMLFormat(MyGenericFlights, MyManager.WorkPlace + "/" + MyUtil.Code + "Flight.xml"); 
-                ClassSerializable.SaveAsXMLFormat(MyScheduledFlights, MyManager.WorkPlace + "/" + MyUtil.Code + "FlightS.xml"); 
+                ClassSerializable.SaveAsXMLFormat(MyGenericFlights, MyManager.WorkPlace + "/" + MyUtil.Code + "_Flight.xml"); 
+                ClassSerializable.SaveAsXMLFormat(MyScheduledFlights, MyManager.WorkPlace + "/" + MyUtil.Code + "_FlightS.xml"); 
             }
             MainWindow tmp = new MainWindow();
             tmp.Show();

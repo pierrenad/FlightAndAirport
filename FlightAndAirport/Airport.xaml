@@ -5,8 +5,121 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlightAndAirport"
         mc:Ignorable="d"
-        Title="Airport" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Airport" Height="450" Width="800" Background="DarkGray">
+    <!--<Window.Resources>
+        <local:ClassColorConverter x:Key="ClassColorConverter"/> 
+    </Window.Resources>-->
+    <!--Permet d'utiliser la classe locale dans Airport-->
+
+    <StackPanel Background="DarkGray" VerticalAlignment="Top" Visibility="Visible">
+        <Menu>
+            <MenuItem Header="File">
+                <MenuItem x:Name="Save_Flight" Header="Save" Click="Save_Flight_Click"/>
+                <MenuItem x:Name="Load_Flight" Header="Load" Click="Load_Flight_Click"/>
+                <MenuItem x:Name="Disconnection" Header="Disconnect" Click="Disconnection_Click"/> 
+            </MenuItem>
+            <MenuItem Header="Option">
+                <MenuItem x:Name="Option" Header="Option" Click="Option_Click"/> 
+            </MenuItem>
+        </Menu>
+        <Label Content="Airport" FontSize="22" HorizontalContentAlignment="Center" FontWeight="UltraBold" Foreground="DarkOrange" Background="Black"/> 
+        <Grid Height="50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Nom :" Grid.Column="0" HorizontalAlignment="Right"/>
+            <Label Content="{Binding Nom}" Grid.Column="1" HorizontalAlignment="Left"/>
+            <Label Content="Code :" Grid.Column="2" HorizontalAlignment="Right"/>
+            <Label Content="{Binding Code}" Grid.Column="3" HorizontalAlignment="Left"/>
+            <Label Content="Localisation :" Grid.Column="4" HorizontalAlignment="Right"/>
+            <Label Content="{Binding Localisation}" Grid.Column="5" HorizontalAlignment="Left"/>
+            <Image Source="{Binding Image}" Grid.Column="6"/>
+        </Grid>
+        <Separator Background="Black"/>
+        <StackPanel>
+            <StackPanel x:Name="Stack_ScheduledFlights" Visibility="Visible">
+                <Label Content="Scheduled Flights"/>
+                <DataGrid x:Name="Datagrid_Flights" ItemsSource="{Binding}" AutoGenerateColumns="False" Height="200"> <!--CurrentCellChanged="Datagrid_Flights_CurrentCellChanged"> -->
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Date" Binding="{Binding Date}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Code" Binding="{Binding Flight.Code}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Source" Binding="{Binding Flight.Source}" FontWeight="Bold" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Destination" Binding="{Binding Flight.Destination}" FontWeight="Bold" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="City" Binding="{Binding Flight.City}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Number" Binding="{Binding Flight.Number}" FontWeight="Bold" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Departs" Binding="{Binding Flight.Departs}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Arrives" Binding="{Binding Flight.Arrives}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Duration" Binding="{Binding Flight.Duration}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Number of passengers" Binding="{Binding Path = Passengers}" IsReadOnly="True"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Separator Background="Black"/> 
+                <DatePicker x:Name="Datepicker_flight"/>
+            </StackPanel>
+            <StackPanel x:Name="Stack_sim" Visibility="Collapsed">
+                <Grid>
+                    <Label Content="Flight simulation" HorizontalAlignment="Left"/>
+                    <Label Name="Label_time" Grid.Column="2" HorizontalAlignment="Right" FontWeight="Bold"/> 
+                </Grid>
+                <DataGrid x:Name="Datagrid_sim" ItemsSource="{Binding}" AutoGenerateColumns="False" Height="200" IsReadOnly="True"> <!--CurrentCellChanged="Datagrid_sim_CurrentCellChanged">-->
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="City" Binding="{Binding Flight.City}"/>
+                        <DataGridTextColumn Header="Number" Binding="{Binding Flight.Number}" FontWeight="Bold"/>
+                        <DataGridTextColumn Header="Departs" Binding="{Binding Flight.Departs}"/>
+                        <DataGridTextColumn Header="Arrives" Binding="{Binding Flight.Arrives}"/>
+                        <DataGridTemplateColumn x:Name="FlightStatus" Header="Flight status">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Flight.Status}"/> <!--Foreground="{Binding Flight.Status, Converter={StaticResource ClasseCouleurConverter}}"/> --> 
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="ButtonFaster" Content="Faster" Grid.Column="2" Grid.ColumnSpan="2" BorderBrush="Blue" Click="ButtonFaster_Click"/>
+                    <Button x:Name="ButtonSlower" Content="Slower" Grid.Column="4" Grid.ColumnSpan="2" BorderBrush="Black" Click="ButtonSlower_Click"/>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+        <Grid Height="Auto"> 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <!-- <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions> -->
+            <!-- <Button x:Name="ButtonFaster" Content="Faster" Grid.Column="2" Grid.ColumnSpan="2" BorderBrush="Blue" Click="ButtonFaster_Click"/>
+            <Button x:Name="ButtonSlower" Content="Slower" Grid.Column="4" Grid.ColumnSpan="2" BorderBrush="Black" Click="ButtonSlower_Click"/> -->
+            <!--<Separator Background="Black"/> -->
+            <Button x:Name="ButtonStart" Content="Start" Grid.Column="1" Grid.ColumnSpan="2" BorderBrush="Green" Click="ButtonStart_Click"/>
+            <Button x:Name="ButtonPause" Content="Pause" Grid.Column="3" Grid.ColumnSpan="2" BorderBrush="Orange" Click="ButtonPause_Click"/>
+            <Button x:Name="ButtonStop" Content="Stop" Grid.Column="5" Grid.ColumnSpan="2" BorderBrush="Red" Click="ButtonStop_Click"/> 
+        </Grid>
+    </StackPanel>
 </Window>

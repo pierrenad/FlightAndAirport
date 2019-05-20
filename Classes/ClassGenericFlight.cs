@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Xml.Serialization; 
 using System.ComponentModel; // pour l'event PropertyChanged 
 using System.Runtime.CompilerServices; // in NotifyPropertyChanged (CallerMemberName) 
 
@@ -144,6 +145,19 @@ namespace Classes
                 }
             }
         }
+
+        [XmlElement("HeureArrivee")] // pour save les heures en .xml 
+        public long HeureArriveeTicks
+        {
+            get { return Arrives.Ticks; }
+            set { Arrives = new TimeSpan(value); }
+        }
+        [XmlElement("HeureDepart")]
+        public long HeureDepartTicks
+        {
+            get { return Departs.Ticks; }
+            set { Departs = new TimeSpan(value); }
+        }
         #endregion
 
         #region CONSTRUCTEURS 
@@ -175,7 +189,7 @@ namespace Classes
         public void Affiche() => Console.WriteLine(ToString());
         private void NotifyPropertyChanged([CallerMemberName] string propertyname = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname)); 
         public event PropertyChangedEventHandler PropertyChanged;
-        /*public void UpdateFlightStatus(DateTime date)
+        public void UpdateFlightStatus(DateTime date)
         {
             TimeSpan tmp = new TimeSpan(date.Hour, date.Minute, date.Second);
             TimeSpan res = Departs - tmp;
@@ -185,7 +199,7 @@ namespace Classes
             else if (res.TotalMinutes <= TimeSpan.FromMinutes(10).TotalMinutes) Status = ClassGenericFlight.LASTCALL;
             else if (res.TotalMinutes <= TimeSpan.FromMinutes(30).TotalMinutes) Status = ClassGenericFlight.BOARDING;
             else Status = ClassGenericFlight.SCHEDULED;
-        }*/
+        }
         #endregion 
     }
 }

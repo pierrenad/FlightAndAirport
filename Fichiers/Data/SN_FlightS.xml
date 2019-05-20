@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<ArrayOfClassScheduledFlight xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ClassScheduledFlight>
+    <Flight>
+      <Code>SN</Code>
+      <Source>BRU</Source>
+      <Destination>MAN</Destination>
+      <City>manchester</City>
+      <Number>SN234</Number>
+      <Departs />
+      <Arrives />
+      <Duration />
+      <HeureArrivee>846000000000</HeureArrivee>
+      <HeureDepart>792000000000</HeureDepart>
+    </Flight>
+    <Passengers>100</Passengers>
+    <Date>2019-05-22T00:00:00</Date>
+  </ClassScheduledFlight>
+  <ClassScheduledFlight>
+    <Flight>
+      <Code>SN</Code>
+      <Source>BRU</Source>
+      <Destination>MAN</Destination>
+      <City>manchester</City>
+      <Number>SN234</Number>
+      <Departs />
+      <Arrives />
+      <Duration />
+      <HeureArrivee>846000000000</HeureArrivee>
+      <HeureDepart>792000000000</HeureDepart>
+    </Flight>
+    <Passengers>50</Passengers>
+    <Date>2019-05-15T00:00:00</Date>
+  </ClassScheduledFlight>
+  <ClassScheduledFlight>
+    <Flight>
+      <Code>SN</Code>
+      <Source>MAN</Source>
+      <Destination>BRU</Destination>
+      <City>bruxelles</City>
+      <Number>SN345</Number>
+      <Departs />
+      <Arrives />
+      <Duration />
+      <HeureArrivee>540000000000</HeureArrivee>
+      <HeureDepart>360000000000</HeureDepart>
+    </Flight>
+    <Passengers>100</Passengers>
+    <Date>2019-05-23T00:00:00</Date>
+  </ClassScheduledFlight>
+  <ClassScheduledFlight>
+    <Flight>
+      <Code>SN</Code>
+      <Source>MAN</Source>
+      <Destination>MAD</Destination>
+      <City>madrid</City>
+      <Number>SN456</Number>
+      <Departs />
+      <Arrives />
+      <Duration />
+      <HeureArrivee>360000000000</HeureArrivee>
+      <HeureDepart>180000000000</HeureDepart>
+    </Flight>
+    <Passengers>0</Passengers>
+    <Date>2019-05-23T00:00:00</Date>
+  </ClassScheduledFlight>
+</ArrayOfClassScheduledFlight>

@@ -6,96 +6,93 @@
         xmlns:local="clr-namespace:FlightAndAirport"
         mc:Ignorable="d"
         Title="Company" Height="410" Width="1000" Background="DarkGray">
-    <Grid Background="DarkGray">
-        <StackPanel VerticalAlignment="Top" Visibility="Visible">
-            <Menu>
-                <MenuItem Header="File">
-                    <MenuItem x:Name="Save_Gen" Header="Save generic flight" Click="Save_Gen_Click"/>
-                    <MenuItem x:Name="Load_Gen" Header="Load generic flight" Click="Load_Gen_Click"/>
-                    <MenuItem x:Name="Export_Gen" Header="Export generic flight" Click="Export_Gen_Click"/>
-                    <MenuItem x:Name="Import_Gen" Header="Import generic flight" Click="Import_Gen_Click"/>
-                    <MenuItem x:Name="Save_Sched" Header="Save scheduled flight" Click="Save_Sched_Click"/>
-                    <MenuItem x:Name="Load_Sched" Header="Load scheduled flight" Click="Load_Sched_Click"/>
-                    <MenuItem x:Name="Deconnexion" Header="Disconnect" Click="Deconnexion_Click"/>
-                </MenuItem>
-                <MenuItem Header="Option">
-                    <MenuItem x:Name="About" Header="About" Click="About_Click"/>
-                    <MenuItem x:Name="Option" Header="Option" Click="Option_Click"/>
-                </MenuItem>
-            </Menu>
-            <Label Content="Airline" FontSize="22" HorizontalContentAlignment="Center" FontWeight="UltraBold" Foreground="Red" Background="MediumBlue"/> 
-            <Separator Background="Black"/>
-            <Grid Height="50">
+    <StackPanel Background="DarkGray" VerticalAlignment="Top" Visibility="Visible">
+        <Menu>
+            <MenuItem Header="File">
+                <MenuItem x:Name="Save_Gen" Header="Save generic flight" Click="Save_Gen_Click"/>
+                <MenuItem x:Name="Load_Gen" Header="Load generic flight" Click="Load_Gen_Click"/>
+                <MenuItem x:Name="Export_Gen" Header="Export generic flight" Click="Export_Gen_Click"/>
+                <MenuItem x:Name="Import_Gen" Header="Import generic flight" Click="Import_Gen_Click"/>
+                <MenuItem x:Name="Save_Sched" Header="Save scheduled flight" Click="Save_Sched_Click"/>
+                <MenuItem x:Name="Load_Sched" Header="Load scheduled flight" Click="Load_Sched_Click"/>
+                <MenuItem x:Name="Disconnection" Header="Disconnect" Click="Deconnexion_Click"/>
+            </MenuItem>
+            <MenuItem Header="Option">
+                <MenuItem x:Name="About" Header="About" Click="About_Click"/>
+                <MenuItem x:Name="Option" Header="Option" Click="Option_Click"/>
+            </MenuItem>
+        </Menu>
+        <Label Content="Airline" FontSize="22" HorizontalContentAlignment="Center" FontWeight="UltraBold" Foreground="DarkOrange" Background="Black"/> 
+        <Grid Height="50">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Nom :" Grid.Column="0" HorizontalAlignment="Right"/>
+            <Label Content="{Binding Nom}" Grid.Column="1" HorizontalAlignment="Left"/>
+            <Label Content="Code :" Grid.Column="2" HorizontalAlignment="Right"/> 
+            <Label Content="{Binding Code}" Grid.Column="3" HorizontalAlignment="Left"/>
+            <Label Content="Localisation :" Grid.Column="4" HorizontalAlignment="Right"/>
+            <Label Content="{Binding Localisation}" Grid.Column="5" HorizontalAlignment="Left"/> 
+            <Image Source="{Binding Image}" Grid.Column="6"/> 
+        </Grid>
+        <Separator Background="Black"/>
+        <StackPanel>
+            <Grid Height="Auto"> 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="4*"/> 
                 </Grid.ColumnDefinitions>
-                <Label Content="Nom :" Grid.Column="0" HorizontalAlignment="Right"/>
-                <Label Content="{Binding Nom}" Grid.Column="1" HorizontalAlignment="Left"/>
-                <Label Content="Code :" Grid.Column="2" HorizontalAlignment="Right"/> 
-                <Label Content="{Binding Code}" Grid.Column="3" HorizontalAlignment="Left"/>
-                <Label Content="Localisation :" Grid.Column="4" HorizontalAlignment="Right"/>
-                <Label Content="{Binding Localisation}" Grid.Column="5" HorizontalAlignment="Left"/> 
-                <Image Source="{Binding Image}" Grid.Column="6"/> 
-            </Grid>
-            <Separator Background="Black"/>
-            <StackPanel>
-                <Grid Height="Auto"> 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="4*"/> 
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
-                        <Label Content="Generic flight :" FontSize="15"/>
-                        <DataGrid x:Name="Datagrid_Generic" ItemsSource="{Binding}" AutoGenerateColumns="False" Height="150" Margin="0,30,0,0"> 
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Code" Binding="{Binding Code}"/>
-                                <DataGridTextColumn Header="Source" Binding="{Binding Source}" FontWeight="Bold"/>
-                                <DataGridTextColumn Header="Destination" Binding="{Binding Destination}" FontWeight="Bold"/>
-                                <DataGridTextColumn Header="City" Binding="{Binding City}"/>
-                                <DataGridTextColumn Header="Number" Binding="{Binding Number}" FontWeight="Bold"/>
-                                <DataGridTextColumn Header="Departs" Binding="{Binding Departs}"/>
-                                <DataGridTextColumn Header="Arrives" Binding="{Binding Arrives}"/>
-                                <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" IsReadOnly="True"/> 
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </Grid>
-                    <GridSplitter Grid.Column="0" Width="5"/> 
-                    <Grid Grid.Column="1">
-                        <Label Content="Scheduled flight :" FontSize="15"/>
-                        <DataGrid x:Name="Datagrid_Scheduled" ItemsSource="{Binding}" AutoGenerateColumns="False" Height="150" Margin="0,30,0,0"> 
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Date" Binding="{Binding Date}" IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Code" Binding="{Binding Flight.Code}" IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Source" Binding="{Binding Flight.Source}" FontWeight="Bold" IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Destination" Binding="{Binding Flight.Destination}" FontWeight="Bold" IsReadOnly="True"/>
-                                <DataGridTextColumn Header="City" Binding="{Binding Flight.City}" IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Number" Binding="{Binding Flight.Number}" FontWeight="Bold" IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Departs" Binding="{Binding Flight.Departs}" IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Arrives" Binding="{Binding Flight.Arrives}" IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Duration" Binding="{Binding Flight.Duration}" IsReadOnly="True"/>
-                                <DataGridTextColumn Header="Number of passengers" Binding="{Binding Path = Passengers}"/> 
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </Grid>
+                <Grid Grid.Column="0">
+                    <Label Content="Generic flight :" FontSize="15"/>
+                    <DataGrid x:Name="Datagrid_Generic" ItemsSource="{Binding}" AutoGenerateColumns="False" Height="150" Margin="0,30,0,0"> 
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Code" Binding="{Binding Code}"/>
+                            <DataGridTextColumn Header="Source" Binding="{Binding Source}" FontWeight="Bold"/>
+                            <DataGridTextColumn Header="Destination" Binding="{Binding Destination}" FontWeight="Bold"/>
+                            <DataGridTextColumn Header="City" Binding="{Binding City}"/>
+                            <DataGridTextColumn Header="Number" Binding="{Binding Number}" FontWeight="Bold"/>
+                            <DataGridTextColumn Header="Departs" Binding="{Binding Departs}"/>
+                            <DataGridTextColumn Header="Arrives" Binding="{Binding Arrives}"/>
+                            <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" IsReadOnly="True"/> 
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
-                <Separator Background="Black"/> 
-                <Button x:Name="Button_PlanningFlight" Content="Planning a flight (scheduled flight) - Choose a date below" HorizontalAlignment="Center" Width="500" BorderBrush="Blue" Click="Button_PlanningFlight_Click"/>
-                <DatePicker x:Name="Datepicker_Scheduledflight" HorizontalAlignment="Center" Width="500"/>
-            </StackPanel>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Button x:Name="Delete_GenericFlight" Content="Delete selected generic flight(s)" Grid.Column="0" BorderBrush="Red" Width="250" HorizontalAlignment="Right" Click="Delete_GenericFlight_Click"/>
-                <Button x:Name="Delete_ScheduledFlight" Content="Delete selected scheduled flight(s)" Grid.Column="1" BorderBrush="Red" Width="250" HorizontalAlignment="Left" Click="Delete_ScheduledFlight_Click"/> 
+                <GridSplitter Grid.Column="0" Width="3" Background="Black"/> 
+                <Grid Grid.Column="1">
+                    <Label Content="Scheduled flight :" FontSize="15"/>
+                    <DataGrid x:Name="Datagrid_Scheduled" ItemsSource="{Binding}" AutoGenerateColumns="False" Height="150" Margin="0,30,0,0"> 
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Date" Binding="{Binding Date}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Code" Binding="{Binding Flight.Code}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Source" Binding="{Binding Flight.Source}" FontWeight="Bold" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Destination" Binding="{Binding Flight.Destination}" FontWeight="Bold" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="City" Binding="{Binding Flight.City}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Number" Binding="{Binding Flight.Number}" FontWeight="Bold" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Departs" Binding="{Binding Flight.Departs}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Arrives" Binding="{Binding Flight.Arrives}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Duration" Binding="{Binding Flight.Duration}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Number of passengers" Binding="{Binding Path = Passengers}"/> 
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
             </Grid>
+            <Separator Background="Black"/> 
+            <Button x:Name="Button_PlanningFlight" Content="Planning a flight (scheduled flight) - Choose a date below" HorizontalAlignment="Center" Width="500" BorderBrush="Blue" Click="Button_PlanningFlight_Click"/>
+            <DatePicker x:Name="Datepicker_Scheduledflight" HorizontalAlignment="Center" Width="500"/>
         </StackPanel>
-    </Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Delete_GenericFlight" Content="Delete selected generic flight(s)" Grid.Column="0" BorderBrush="Red" Width="250" HorizontalAlignment="Right" Click="Delete_GenericFlight_Click"/>
+            <Button x:Name="Delete_ScheduledFlight" Content="Delete selected scheduled flight(s)" Grid.Column="1" BorderBrush="Red" Width="250" HorizontalAlignment="Left" Click="Delete_ScheduledFlight_Click"/> 
+        </Grid>
+    </StackPanel>
 </Window>
