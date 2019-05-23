@@ -20,6 +20,5 @@ namespace Classes
         }
 
         public override string ToString() => "Name : " + Nom + ", Code : " + Code + ", Localisation : " + Localisation; 
-        public void Affiche() => Console.WriteLine(ToString());
     }
 }

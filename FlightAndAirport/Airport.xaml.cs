@@ -6,9 +6,9 @@ using System.Windows.Forms;
 using Classes;
 using MessageBox = System.Windows.MessageBox; // car sinon prend celui de Forms 
 // pour nouvelle classe permettant de changer couleur 
-using System.Globalization;
-using System.Windows.Data;
-using System.Windows.Media; 
+//using System.Globalization;
+//using System.Windows.Data;
+//using System.Windows.Media; 
 
 namespace FlightAndAirport
 {
@@ -190,7 +190,7 @@ namespace FlightAndAirport
                                 ButtonFaster.IsEnabled = false;
                                 ButtonSlower.IsEnabled = false;
                                 ButtonStop.IsEnabled = true;
-                                Label_time.Content = "Simulation finie";
+                                Label_time.Content = "Simulation ended";
                                 t.Clear();
                                 MySimFlights.Clear();
                                 ButtonStart.IsEnabled = true;
@@ -245,16 +245,6 @@ namespace FlightAndAirport
             MainWindow tmp = new MainWindow();
             tmp.Show();
         }
-        /*private void Datagrid_Flights_CurrentCellChanged(object sender, EventArgs e)
-        {
-            Sort();
-            Datagrid_Flights.DataContext = MyScheduledFlights;
-        }
-        private void Datagrid_sim_CurrentCellChanged(object sender, EventArgs e)
-        {
-            SortSim();
-            Datagrid_sim.DataContext = MySimFlights;
-        }*/
         public void Sort()
         {
             List<ClassScheduledFlight> sortableList = new List<ClassScheduledFlight>(MyScheduledFlights);
@@ -275,23 +265,4 @@ namespace FlightAndAirport
         }
         #endregion
     }
-
-    /*public class ClassColorConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            if (value.ToString() == ClassGenericFlight.AIRBORNE) return new SolidColorBrush(Colors.Green);
-            else if (value.ToString() == ClassGenericFlight.BOARDING) return new SolidColorBrush(Colors.Blue);
-            else if (value.ToString() == ClassGenericFlight.FLYING) return new SolidColorBrush(Colors.Black);
-            else if (value.ToString() == ClassGenericFlight.GATECLOSED) return new SolidColorBrush(Colors.Yellow);
-            else if (value.ToString() == ClassGenericFlight.LASTCALL) return new SolidColorBrush(Colors.Violet);
-            else if (value.ToString() == ClassGenericFlight.SCHEDULED) return new SolidColorBrush(Colors.Orange);
-            else return new SolidColorBrush(Colors.Black);
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-    }*/
 }

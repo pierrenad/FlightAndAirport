@@ -6,11 +6,6 @@
         xmlns:local="clr-namespace:FlightAndAirport"
         mc:Ignorable="d"
         Title="Airport" Height="450" Width="800" Background="DarkGray">
-    <!--<Window.Resources>
-        <local:ClassColorConverter x:Key="ClassColorConverter"/> 
-    </Window.Resources>-->
-    <!--Permet d'utiliser la classe locale dans Airport-->
-
     <StackPanel Background="DarkGray" VerticalAlignment="Top" Visibility="Visible">
         <Menu>
             <MenuItem Header="File">
@@ -45,18 +40,18 @@
         <StackPanel>
             <StackPanel x:Name="Stack_ScheduledFlights" Visibility="Visible">
                 <Label Content="Scheduled Flights"/>
-                <DataGrid x:Name="Datagrid_Flights" ItemsSource="{Binding}" AutoGenerateColumns="False" Height="200"> <!--CurrentCellChanged="Datagrid_Flights_CurrentCellChanged"> -->
+                <DataGrid x:Name="Datagrid_Flights" ItemsSource="{Binding}" AutoGenerateColumns="False" Height="200" IsReadOnly="True"> 
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Date" Binding="{Binding Date}" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Code" Binding="{Binding Flight.Code}" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Source" Binding="{Binding Flight.Source}" FontWeight="Bold" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Destination" Binding="{Binding Flight.Destination}" FontWeight="Bold" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="City" Binding="{Binding Flight.City}" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Number" Binding="{Binding Flight.Number}" FontWeight="Bold" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Departs" Binding="{Binding Flight.Departs}" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Arrives" Binding="{Binding Flight.Arrives}" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Duration" Binding="{Binding Flight.Duration}" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Number of passengers" Binding="{Binding Path = Passengers}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Date" Binding="{Binding Date}"/>
+                        <DataGridTextColumn Header="Code" Binding="{Binding Flight.Code}"/>
+                        <DataGridTextColumn Header="Source" Binding="{Binding Flight.Source}" FontWeight="Bold"/>
+                        <DataGridTextColumn Header="Destination" Binding="{Binding Flight.Destination}" FontWeight="Bold"/>
+                        <DataGridTextColumn Header="City" Binding="{Binding Flight.City}"/>
+                        <DataGridTextColumn Header="Number" Binding="{Binding Flight.Number}" FontWeight="Bold"/>
+                        <DataGridTextColumn Header="Departs" Binding="{Binding Flight.Departs}"/>
+                        <DataGridTextColumn Header="Arrives" Binding="{Binding Flight.Arrives}"/>
+                        <DataGridTextColumn Header="Duration" Binding="{Binding Flight.Duration}"/>
+                        <DataGridTextColumn Header="Number of passengers" Binding="{Binding Path = Passengers}"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <Separator Background="Black"/> 
@@ -67,7 +62,7 @@
                     <Label Content="Flight simulation" HorizontalAlignment="Left"/>
                     <Label Name="Label_time" Grid.Column="2" HorizontalAlignment="Right" FontWeight="Bold"/> 
                 </Grid>
-                <DataGrid x:Name="Datagrid_sim" ItemsSource="{Binding}" AutoGenerateColumns="False" Height="200" IsReadOnly="True"> <!--CurrentCellChanged="Datagrid_sim_CurrentCellChanged">-->
+                <DataGrid x:Name="Datagrid_sim" ItemsSource="{Binding}" AutoGenerateColumns="False" Height="200" IsReadOnly="True"> 
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="City" Binding="{Binding Flight.City}"/>
                         <DataGridTextColumn Header="Number" Binding="{Binding Flight.Number}" FontWeight="Bold"/>
@@ -76,7 +71,7 @@
                         <DataGridTemplateColumn x:Name="FlightStatus" Header="Flight status">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Flight.Status}"/> <!--Foreground="{Binding Flight.Status, Converter={StaticResource ClasseCouleurConverter}}"/> --> 
+                                    <TextBlock Text="{Binding Flight.Status}" Foreground="{Binding Flight.Color}"/> 
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -98,7 +93,7 @@
                 </Grid>
             </StackPanel>
         </StackPanel>
-        <Grid Height="Auto"> 
+        <Grid Height="Auto">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -109,14 +104,6 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <!-- <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions> -->
-            <!-- <Button x:Name="ButtonFaster" Content="Faster" Grid.Column="2" Grid.ColumnSpan="2" BorderBrush="Blue" Click="ButtonFaster_Click"/>
-            <Button x:Name="ButtonSlower" Content="Slower" Grid.Column="4" Grid.ColumnSpan="2" BorderBrush="Black" Click="ButtonSlower_Click"/> -->
-            <!--<Separator Background="Black"/> -->
             <Button x:Name="ButtonStart" Content="Start" Grid.Column="1" Grid.ColumnSpan="2" BorderBrush="Green" Click="ButtonStart_Click"/>
             <Button x:Name="ButtonPause" Content="Pause" Grid.Column="3" Grid.ColumnSpan="2" BorderBrush="Orange" Click="ButtonPause_Click"/>
             <Button x:Name="ButtonStop" Content="Stop" Grid.Column="5" Grid.ColumnSpan="2" BorderBrush="Red" Click="ButtonStop_Click"/> 

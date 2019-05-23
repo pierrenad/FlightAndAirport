@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Media; 
 using System.Windows.Forms;
 using System.Xml.Serialization; 
 using System.ComponentModel; // pour l'event PropertyChanged 
@@ -8,12 +9,12 @@ namespace Classes
 {
     public class ClassGenericFlight : IComparable<ClassGenericFlight> 
     {
-        public static string SCHEDULED = "SCHEDULED (Vol programmé)";
-        public static string AIRBORNE = "AIRBORNE (Avion décollé)";
-        public static string GATECLOSED = "GATE CLOSED (Embarquement finie)";
-        public static string LASTCALL = "LASTCALL (Embarquement presque terminé)";
-        public static string BOARDING = "BOARDING (Embarquement en cours)";
-        public static string FLYING = "FLYING (En vol)";
+        public static string SCHEDULED = "SCHEDULED";
+        public static string AIRBORNE = "AIRBORNE";
+        public static string GATECLOSED = "GATE CLOSED";
+        public static string LASTCALL = "LASTCALL";
+        public static string BOARDING = "BOARDING";
+        public static string FLYING = "FLYING";
 
         #region VARIABLES 
         private string _code;
@@ -22,6 +23,7 @@ namespace Classes
         private string _city;
         private string _number; 
         private string _status;
+        private SolidColorBrush _color; // pour affichage dans la simulation 
         private TimeSpan _departs;
         private TimeSpan _arrives;
         private TimeSpan _duration;
@@ -103,7 +105,22 @@ namespace Classes
             set
             {
                 _status = value;
+                if (value.ToString() == ClassGenericFlight.AIRBORNE) Color = new SolidColorBrush(Colors.Green); // pour affichage dans la simulation 
+                else if (value.ToString() == ClassGenericFlight.BOARDING) Color = new SolidColorBrush(Colors.Blue);
+                else if (value.ToString() == ClassGenericFlight.FLYING) Color = new SolidColorBrush(Colors.Black);
+                else if (value.ToString() == ClassGenericFlight.GATECLOSED) Color = new SolidColorBrush(Colors.LightGoldenrodYellow);
+                else if (value.ToString() == ClassGenericFlight.LASTCALL) Color = new SolidColorBrush(Colors.Violet);
+                else if (value.ToString() == ClassGenericFlight.SCHEDULED) Color = new SolidColorBrush(Colors.Orange);
+                else Color = new SolidColorBrush(Colors.Black);
                 NotifyPropertyChanged();
+            }
+        }
+        public SolidColorBrush Color // pour affichage dans la simulation 
+        {
+            get => _color; 
+            set
+            {
+                _color = value; 
             }
         }
         public TimeSpan Departs
@@ -186,7 +203,6 @@ namespace Classes
         }
         public int CompareTo(ClassGenericFlight other) => Departs.CompareTo(other.Departs);
         public override string ToString() => "(Generic flight) Source : " + Source + ", destination : " + Destination + ", city : " + City + ", number : " + Number + ", departs : " + Departs + ", arrives : " + Arrives + ", flight duration : " + Duration;
-        public void Affiche() => Console.WriteLine(ToString());
         private void NotifyPropertyChanged([CallerMemberName] string propertyname = null) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyname)); 
         public event PropertyChangedEventHandler PropertyChanged;
         public void UpdateFlightStatus(DateTime date)

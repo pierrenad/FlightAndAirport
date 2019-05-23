@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlightAndAirport"
         mc:Ignorable="d"
-        Title="Login" Height="500" Width="500" ResizeMode="NoResize" Background="DarkGray"> 
+        Title="Login" Height="525" Width="500" ResizeMode="NoResize" Background="DarkGray"> 
     <Grid>
         <!--Connexion Window--> 
         <StackPanel x:Name="StackConnexion" Visibility="Visible">
@@ -19,7 +19,8 @@
             <TextBox x:Name="Code" Height="20" VerticalAlignment="Top"/>
             <Button x:Name="Validate" Content="Validate" FontSize="15" Height="25" Margin="0,25,0,0" Click="Valider_Click"/>
             <Button x:Name="Cancel" Content="Cancel" FontSize="15" Height="25" Margin="0,5,0,0" Click="Annuler_Click"/>
-            <Button x:Name="Register" Content="Register" FontSize="15" Height="25" Margin="0,5,0,0" Click="Enregistrer_Click"/> 
+            <Button x:Name="Register" Content="Register" FontSize="15" Height="25" Margin="0,5,0,0" Click="Enregistrer_Click"/>
+            <Button x:Name="Option" Content="Option" FontSize="15" Height="25" Margin="0,5,0,0" Click="Option_Click"/> 
         </StackPanel>
         
         <!--Nouveau Window--> 
@@ -39,8 +40,9 @@
             <Label Content="Confirm password :" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left"/>
             <PasswordBox  x:Name="New_PasswordConfirmation" Height="20" VerticalAlignment="Top" PasswordChar="*"/>
             <!-- <TextBox x:Name="New_MdpConfirmation" Height="20" VerticalAlignment="Top"/> --> 
-            <Button x:Name="ButtonCreate" Content="Create" FontSize="15" Height="25" Margin="0,10,0,0" Click="ButtonCreer_Click"/> 
-            <Button x:Name="ButtonCancel" Content="Cancel" FontSize="15" Height="25" Click="ButtonAnnuler_Click"/> 
+            <Button x:Name="ButtonCreate" Content="Create" FontSize="15" Height="25" Margin="0,10,0,0" Click="ButtonCreer_Click"/>
+            <Button x:Name="ButtonCancel" Content="Cancel" FontSize="15" Height="25" Margin="0,5,0,0" Click="ButtonAnnuler_Click"/>
+            <Button x:Name="Option2" Content="Option" FontSize="15" Height="25" Margin="0,5,0,0" Click="Option_Click"/>
         </StackPanel>
     </Grid>
 </Window>

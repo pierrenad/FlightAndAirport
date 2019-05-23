@@ -66,6 +66,11 @@ namespace FlightAndAirport
         {
             Affichage("Nouveau"); 
         }
+
+        private void Option_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.Option();
+        }
         #endregion
 
         #region BOUTONS_NOUVEL_UTI
@@ -114,6 +119,5 @@ namespace FlightAndAirport
                     break;
             }
         }
-
     }
 }

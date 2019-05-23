@@ -53,7 +53,6 @@ namespace FlightAndAirport
             Closing += Closing_Company; 
         }
 
-        #region BUTTONS_METHODES 
         #region FILE_MENU 
         private void Save_Gen_Click(object sender, RoutedEventArgs e)
         {
@@ -198,6 +197,7 @@ namespace FlightAndAirport
         }
         #endregion
 
+        #region BUTTONS_METHODES 
         private void Button_PlanningFlight_Click(object sender, RoutedEventArgs e)
         {
             if (Datepicker_Scheduledflight.Text.Length == 0) MessageBox.Show("Select a date before !", "Error", MessageBoxButton.OK, MessageBoxImage.Error); 
