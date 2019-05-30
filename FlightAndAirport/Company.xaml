@@ -33,11 +33,11 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Label Content="Nom :" Grid.Column="0" HorizontalAlignment="Right"/>
+            <Label Content="Name :" Grid.Column="0" HorizontalAlignment="Right"/>
             <Label Content="{Binding Nom}" Grid.Column="1" HorizontalAlignment="Left"/>
             <Label Content="Code :" Grid.Column="2" HorizontalAlignment="Right"/> 
             <Label Content="{Binding Code}" Grid.Column="3" HorizontalAlignment="Left"/>
-            <Label Content="Localisation :" Grid.Column="4" HorizontalAlignment="Right"/>
+            <Label Content="City :" Grid.Column="4" HorizontalAlignment="Right"/>
             <Label Content="{Binding Localisation}" Grid.Column="5" HorizontalAlignment="Left"/> 
             <Image Source="{Binding Image}" Grid.Column="6"/> 
         </Grid>
@@ -57,8 +57,8 @@
                             <DataGridTextColumn Header="Destination" Binding="{Binding Destination}" FontWeight="Bold"/>
                             <DataGridTextColumn Header="City" Binding="{Binding City}"/>
                             <DataGridTextColumn Header="Number" Binding="{Binding Number}" FontWeight="Bold"/>
-                            <DataGridTextColumn Header="Departs" Binding="{Binding Departs}"/>
-                            <DataGridTextColumn Header="Arrives" Binding="{Binding Arrives}"/>
+                            <DataGridTextColumn Header="Departure" Binding="{Binding Departs}"/>
+                            <DataGridTextColumn Header="Arrivals" Binding="{Binding Arrives}"/>
                             <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" IsReadOnly="True"/> 
                         </DataGrid.Columns>
                     </DataGrid>
@@ -74,8 +74,8 @@
                             <DataGridTextColumn Header="Destination" Binding="{Binding Flight.Destination}" FontWeight="Bold" IsReadOnly="True"/>
                             <DataGridTextColumn Header="City" Binding="{Binding Flight.City}" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Number" Binding="{Binding Flight.Number}" FontWeight="Bold" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Departs" Binding="{Binding Flight.Departs}" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Arrives" Binding="{Binding Flight.Arrives}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Departure" Binding="{Binding Flight.Departs}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Arrivals" Binding="{Binding Flight.Arrives}" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Duration" Binding="{Binding Flight.Duration}" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Number of passengers" Binding="{Binding Path = Passengers}"/> 
                         </DataGrid.Columns>
